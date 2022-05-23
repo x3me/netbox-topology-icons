@@ -19,9 +19,11 @@ jobs:
       - name: "Update PATH"
         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-      - name: "Get version"
-        id: version
-        run: poetry version | cut -d ' ' -f 2
+      - name: "Declare variables"
+        id: vars
+        run: |
+          echo "::set-output name=version::$(poetry version | cut -d ' ' -f 2)"
+          echo "::set-output name=commit::$GITHUB_SHA"
 
       - name: "Build project for distribution"
         run: ./build.sh
@@ -31,7 +33,7 @@ jobs:
         with:
           artifacts: "dist/*"
           token: ${{ secrets.GITHUB_TOKEN }}
-          draft: false
+          name: "Icons v${{ steps.vars.outputs.version }}"
+          tag: "${{ steps.vars.outputs.commit }}"
           allowUpdates: true
-          name: "Icons v${{ steps.version.outputs.stdout }}"
-          tag: "$GITHUB_SHA"
+          draft: false
