@@ -1,9 +1,17 @@
 # Netbox topology views plugin additional icons
 
+Override and icons to the [netbox topology](https://github.com/mattieserver/netbox-topology-views) plugin
+
 ## Setup
 
-Change the netbox topology views plugin configuration in PLUGIN_CONFIG in your configuration.py
-to include the necessary device roles
+1. Add the plugin before the netbox topology views plugin
+
+```python
+PLUGINS = [..., "netbox_topology_icons", "netbox_topology_views"]
+```
+
+2. Change the netbox topology views plugin configuration in PLUGIN_CONFIG in your configuration.py
+   to include the necessary device roles
 
 **Excitel**
 
@@ -28,20 +36,20 @@ to include the necessary device roles
 "netbox_topology_views": {
     "device_img": [
         "access-switch",
-        "dns",
-        "mikrotik",
-        "server",
         "akamai-equipment",
-        "muxdemux",
-        "speed-test-server",
         "cache-server",
-        "kvm",
-        "olt",
-        "role-unknown",
-        "transport-switch",
         "colocated-customer",
+        "dns",
+        "kvm",
+        "mikrotik",
+        "muxdemux",
+        "olt",
         "pdu",
+        "role-unknown",
         "route-server",
+        "server",
+        "speed-test-server",
+        "transport-switch",
         "ups"
     ],
     ...
