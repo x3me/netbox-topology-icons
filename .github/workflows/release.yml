@@ -34,4 +34,4 @@ jobs:
           draft: false
           allowUpdates: true
           name: "Icons v${{ steps.version.outputs.stdout }}"
-          tag: $(git rev-parse --short "$GITHUB_SHA")
+          tag: "$GITHUB_SHA"
