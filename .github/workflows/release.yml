@@ -23,7 +23,6 @@ jobs:
         id: vars
         run: |
           echo "::set-output name=version::$(poetry version | cut -d ' ' -f 2)"
-          echo "::set-output name=commit::$GITHUB_SHA"
 
       - name: "Build project for distribution"
         run: ./build.sh
@@ -34,6 +33,6 @@ jobs:
           artifacts: "dist/*"
           token: ${{ secrets.GITHUB_TOKEN }}
           name: "Icons v${{ steps.vars.outputs.version }}"
-          tag: "${{ steps.vars.outputs.commit }}"
+          commit: true
           allowUpdates: true
           draft: false
