@@ -1,0 +1,36 @@
+name: Release
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Setup poetry
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: 1.1
+
+      - name: "Update PATH"
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: "Get version"
+        id: version
+        run: poetry version | cut -d ' ' -f 2
+
+      - name: "Build project for distribution"
+        run: ./build.sh
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "dist/*"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
+          allowUpdates: true
+          name: "Icons v${{ steps.version.outputs.stdout }}"
