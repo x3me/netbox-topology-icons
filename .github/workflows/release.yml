@@ -1,6 +1,12 @@
 name: Release
 
-on: [push]
+on:
+  push:
+    paths:
+      - "icons-*/**"
+      - "netbox_topology_icons/**"
+      - "build.sh"
+      - "pyproject.toml"
 
 jobs:
   build:
