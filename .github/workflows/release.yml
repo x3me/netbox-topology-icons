@@ -34,7 +34,6 @@ jobs:
           artifacts: "dist/*"
           token: ${{ secrets.GITHUB_TOKEN }}
           name: "Icons v${{ steps.vars.outputs.version }}"
-          commit: "${{ steps.vars.outputs.commit }}"
-          tag: ""
+          tag: "v${{ steps.vars.outputs.version }}"
           allowUpdates: true
           draft: false
