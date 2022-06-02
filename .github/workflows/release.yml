@@ -32,7 +32,7 @@ jobs:
           echo "::set-output name=commit::$GITHUB_SHA"
 
       - name: "Build project for distribution"
-        run: ./build.sh
+        run: poetry build
 
       - name: Create Release
         uses: ncipollo/release-action@v1
