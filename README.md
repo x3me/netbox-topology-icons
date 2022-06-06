@@ -11,47 +11,14 @@ PLUGINS = [..., "netbox_topology_icons", "netbox_topology_views"]
 ```
 
 2. Change the netbox topology views plugin configuration in PLUGIN_CONFIG in your configuration.py
-   to include the necessary device roles
-
-**Excitel**
+   to point to the correct static file directory
 
 ```python
-"netbox_topology_views": {
-    "device_img": [
-        "access",
-        "core",
-        "distribution",
-        "last-mile",
-        "power",
-        "private-cloud",
-        "systems-and-servers",
-    ],
-    ...
-}
-```
-
-**x3me**
-
-```python
-"netbox_topology_views": {
-    "device_img": [
-        "access-switch",
-        "akamai-equipment",
-        "cache-server",
-        "colocated-customer",
-        "dns",
-        "kvm",
-        "mikrotik",
-        "muxdemux",
-        "olt",
-        "pdu",
-        "role-unknown",
-        "route-server",
-        "server",
-        "speed-test-server",
-        "transport-switch",
-        "ups"
-    ],
-    ...
+PLUGINS_CONFIG = {
+    ...,
+    "netbox_topology_views": {
+        ...,
+        "static_image_directory": "netbox_topology_icons"
+    }
 }
 ```
