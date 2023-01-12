@@ -1,13 +1,23 @@
-[tool.poetry]
+[project]
 name = "netbox-topology-icons"
-version = "0.2.0"
-description = "Plugin to add icons to topology plugin"
-authors = ["Victor Gorchilov <victor.gorchilov@x3me.net>"]
+dynamic = ["version"]
+description = "Plugin to add icons to netbox topology plugin"
+authors = [
+    { name = "Victor Gorchilov", email = "victor.gorchilov@x3me.net" },
+    { name = "Victor Gorchilov", email = "victor.gorchilov@x3me.net" },
+]
+dependencies = []
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ""
 
-[tool.poetry.dependencies]
+[project.urls]
 
-[tool.poetry.dev-dependencies]
+[tool.pdm]
+version = { source = "file", path = "netbox_topology_icons/__init__.py" }
 
+[tool.pdm.build]
+includes = []
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"

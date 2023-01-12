@@ -3,9 +3,7 @@ name: Release
 on:
   push:
     paths:
-      - "icons-*/**"
       - "netbox_topology_icons/**"
-      - "build.sh"
       - "pyproject.toml"
 
 jobs:
@@ -17,10 +15,8 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Setup poetry
-        uses: abatilo/actions-poetry@v2.0.0
-        with:
-          poetry-version: 1.1
+      - name: Install PDM
+        run: pip3 install pdm
 
       - name: "Update PATH"
         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
@@ -28,11 +24,11 @@ jobs:
       - name: "Declare variables"
         id: vars
         run: |
-          echo "::set-output name=version::$(poetry version | cut -d ' ' -f 2)"
+          echo "::set-output name=version::$(pdm show --version)"
           echo "::set-output name=commit::$GITHUB_SHA"
 
       - name: "Build project for distribution"
-        run: poetry build
+        run: pdm build
 
       - name: Create Release
         uses: ncipollo/release-action@v1
