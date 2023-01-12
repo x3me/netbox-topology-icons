@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "netbox-topology-icons"
-version = "0.1.0"
+version = "0.2.0"
 description = "Plugin to add icons to topology plugin"
 authors = ["Victor Gorchilov <victor.gorchilov@x3me.net>"]
 
