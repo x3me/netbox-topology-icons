@@ -1,6 +1,6 @@
 # Netbox topology views plugin additional icons
 
-Override and icons to the [netbox topology](https://github.com/mattieserver/netbox-topology-views) plugin
+Icon library for the [netbox topology](https://github.com/mattieserver/netbox-topology-views) plugin
 
 ## Setup
 
